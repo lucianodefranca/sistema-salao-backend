@@ -1,14 +1,21 @@
 package com.luciano.appsalao.entities;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Ordem {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
     private LocalDateTime date;
     private Integer status;
     private Double value;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     public Ordem() {}

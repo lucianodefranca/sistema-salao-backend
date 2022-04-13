@@ -1,16 +1,21 @@
 package com.luciano.appsalao.entities;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Cliente {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String cpf;
     private LocalDateTime date;
 
+    @OneToMany(mappedBy = "cliente")
     private List<Ordem> ordems = new ArrayList<>();
 
     public Cliente() {}
