@@ -22,4 +22,8 @@ public class ClienteService {
     public List<Cliente> findAll() {
         return repository.findAll();
     }
+
+    public Cliente create(Cliente obj) {
+        return repository.save(obj);
+    }
 }

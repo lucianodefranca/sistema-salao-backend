@@ -22,7 +22,9 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Ordem> ordems = new ArrayList<>();
 
-    public Cliente() {}
+    public Cliente() {
+        this.date = LocalDateTime.now();
+    }
 
     public Cliente(Integer id, String name, String cpf, LocalDateTime date) {
         this.id = id;
