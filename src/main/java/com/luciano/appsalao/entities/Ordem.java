@@ -1,6 +1,8 @@
 package com.luciano.appsalao.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.luciano.appsalao.entities.enums.Status;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ public class Ordem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String description;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime date;
     private Integer status;
     private Double value;
@@ -21,13 +25,16 @@ public class Ordem {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
-    public Ordem() {}
+    public Ordem() {
+        this.date = LocalDateTime.now();
+        this.setStatus(Status.ABERTO);
+    }
 
-    public Ordem(Integer id, String description, LocalDateTime date, Integer status, Double value, Cliente cliente) {
+    public Ordem(Integer id, String description, LocalDateTime date, Status status, Double value, Cliente cliente) {
         this.id = id;
         this.description = description;
         this.date = date;
-        this.status = status;
+        this.status = (status == null) ? 0 : status.getCod();
         this.value = value;
         this.cliente = cliente;
     }
@@ -56,12 +63,12 @@ public class Ordem {
         this.date = date;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Status getStatus() {
+        return Status.toEnum(this.status);
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setStatus(Status status) {
+        this.status = status.getCod();
     }
 
     public Double getValue() {

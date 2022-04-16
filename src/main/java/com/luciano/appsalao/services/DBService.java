@@ -2,6 +2,7 @@ package com.luciano.appsalao.services;
 
 import com.luciano.appsalao.entities.Cliente;
 import com.luciano.appsalao.entities.Ordem;
+import com.luciano.appsalao.entities.enums.Status;
 import com.luciano.appsalao.repositories.ClienteRepository;
 import com.luciano.appsalao.repositories.OrdemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,9 +25,9 @@ public class DBService {
         Cliente c1 = new Cliente(null, "Maria da Silva", "12332165454", LocalDateTime.now());
         Cliente c2 = new Cliente(null, "Joana de Souza", "19876543211", LocalDateTime.now());
 
-        Ordem os1 = new Ordem(null, "Progressiva", LocalDateTime.now(), 1, 200.00, c1);
-        Ordem os2 = new Ordem(null, "Mechas", LocalDateTime.now(), 1, 430.00, c1);
-        Ordem os3 = new Ordem(null, "Raiz e escova", LocalDateTime.now(), 1, 120.00, c2);
+        Ordem os1 = new Ordem(null, "Progressiva", LocalDateTime.now(), Status.ABERTO, 200.00, c1);
+        Ordem os2 = new Ordem(null, "Mechas", LocalDateTime.now(), Status.ABERTO, 430.00, c1);
+        Ordem os3 = new Ordem(null, "Raiz e escova", LocalDateTime.now(), Status.ENCERRADO, 120.00, c2);
 
         c1.getOrdems().addAll(Arrays.asList(os1, os2));
         c2.getOrdems().addAll(Arrays.asList(os3));

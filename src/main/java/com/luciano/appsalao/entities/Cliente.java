@@ -1,5 +1,7 @@
 package com.luciano.appsalao.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ public class Cliente {
     private Integer id;
     private String name;
     private String cpf;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime date;
 
     @OneToMany(mappedBy = "cliente")

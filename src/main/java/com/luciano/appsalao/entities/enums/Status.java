@@ -8,7 +8,7 @@ public enum Status {
     private Integer cod;
     private String description;
 
-    Status(int cod, String description) {
+    Status(Integer cod, String description) {
         this.cod = cod;
         this.description = description;
     }
@@ -17,28 +17,20 @@ public enum Status {
         return cod;
     }
 
-    public void setCod(Integer cod) {
-        this.cod = cod;
-    }
-
     public String getDescription() {
         return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public static Status toEnum(Integer cod) {
         if (cod == null) {
             return null;
         }
-        for (Status x : Status.values()) {
+
+        for (Status x: Status.values()) {
             if (cod.equals(x.getCod())) {
                 return x;
             }
-            throw new IllegalArgumentException("Status invalido! " + cod);
         }
-        return null;
+        throw new IllegalArgumentException("Status invalida!" + cod);
     }
 }
