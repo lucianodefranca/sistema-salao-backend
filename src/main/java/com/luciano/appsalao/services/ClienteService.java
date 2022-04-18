@@ -1,5 +1,6 @@
 package com.luciano.appsalao.services;
 
+import com.luciano.appsalao.dtos.ClienteDTO;
 import com.luciano.appsalao.entities.Cliente;
 import com.luciano.appsalao.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +28,11 @@ public class ClienteService {
         return repository.save(obj);
     }
 
-    public Cliente update(Integer id, Cliente obj) {
+    public Cliente update(Integer id, ClienteDTO objDto) {
         Cliente oldObj = findById(id);
 
-        oldObj.setName(obj.getName());
-        oldObj.setCpf(obj.getCpf());
+        oldObj.setName(objDto.getName());
+        oldObj.setCpf(objDto.getCpf());
 
         return repository.save(oldObj);
     }

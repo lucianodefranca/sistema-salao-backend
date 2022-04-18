@@ -23,9 +23,6 @@ public class Cliente {
     private List<Ordem> ordems = new ArrayList<>();
 
     public Cliente() {
-    }
-
-    public Cliente(Cliente update) {
         this.date = LocalDateTime.now();
     }
 

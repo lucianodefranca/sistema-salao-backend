@@ -1,5 +1,6 @@
 package com.luciano.appsalao.controllers;
 
+import com.luciano.appsalao.dtos.ClienteDTO;
 import com.luciano.appsalao.entities.Cliente;
 import com.luciano.appsalao.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class ClienteController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
-        Cliente newObj = new Cliente(service.update(id, obj));
+    public ResponseEntity<ClienteDTO> update(@PathVariable Integer id, @RequestBody ClienteDTO objDto) {
+        ClienteDTO newObj = new ClienteDTO(service.update(id, objDto));
         return ResponseEntity.ok().build();
     }
 }
