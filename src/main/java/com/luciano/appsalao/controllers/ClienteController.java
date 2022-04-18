@@ -42,4 +42,10 @@ public class ClienteController {
         ClienteDTO newObj = new ClienteDTO(service.update(id, objDto));
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

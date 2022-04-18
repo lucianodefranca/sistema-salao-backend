@@ -36,4 +36,9 @@ public class ClienteService {
 
         return repository.save(oldObj);
     }
+
+    public void delete(Integer id) {
+        findById(id);
+        repository.deleteById(id);
+    }
 }
