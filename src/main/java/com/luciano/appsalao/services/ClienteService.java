@@ -26,4 +26,13 @@ public class ClienteService {
     public Cliente create(Cliente obj) {
         return repository.save(obj);
     }
+
+    public Cliente update(Integer id, Cliente obj) {
+        Cliente oldObj = findById(id);
+
+        oldObj.setName(obj.getName());
+        oldObj.setCpf(obj.getCpf());
+
+        return repository.save(oldObj);
+    }
 }

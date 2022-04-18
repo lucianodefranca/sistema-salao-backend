@@ -35,4 +35,10 @@ public class ClienteController {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Cliente> update(@PathVariable Integer id, @RequestBody Cliente obj) {
+        Cliente newObj = new Cliente(service.update(id, obj));
+        return ResponseEntity.ok().build();
+    }
 }
